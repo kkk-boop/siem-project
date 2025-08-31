@@ -1,0 +1,8 @@
+*.pem
+*.key
+client.keys
+/var/ossec/**
+/var/log/wazuh/**
+*.log
+node_modules/
+__pycache__/

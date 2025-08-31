@@ -1,0 +1,20 @@
+<ossec_config>
+  <client><address>${MANAGER_IP}</address><port>1514</port><protocol>tcp</protocol></client>
+  <syscheck>
+    <enabled>yes</enabled><scan_on_start>yes</scan_on_start><frequency>900</frequency>
+    <directories check_all="yes" realtime="yes">/etc</directories>
+    <directories realtime="yes">/usr/bin</directories>
+    <directories realtime="yes">/usr/sbin</directories>
+    <directories realtime="yes">/bin</directories>
+    <directories realtime="yes">/sbin</directories>
+    <ignore>/var/cache</ignore><ignore>/var/tmp</ignore><ignore>/tmp</ignore>
+    <ignore type="sregex">^/home/.*/\.cache/.*</ignore>
+    <ignore type="sregex">^/home/.*/\.cache/(google-chrome|chromium)/.*</ignore>
+    <ignore type="sregex">^/home/.*/\.cache/mesa_shader_cache/.*</ignore>
+    <ignore type="sregex">^/etc/rc[0-6S]\.d/.*wazuh-agent.*</ignore>
+    <ignore>/etc/systemd/system/multi-user.target.wants/wazuh-agent.service</ignore>
+  </syscheck>
+  <localfile><log_format>syslog</log_format><location>/var/log/auth.log</location></localfile>
+  <localfile><log_format>syslog</log_format><location>/var/log/syslog</location></localfile>
+  <localfile><log_format>journald</log_format><only_future_events>yes</only_future_events></localfile>
+</ossec_config>
